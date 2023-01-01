@@ -8,30 +8,29 @@ using System.Threading.Tasks;
 
 namespace ChainOfResponsibilityDP.ChainOfResponsibility
 {
-    public class Treasurer : Employee
+    public class RegionalManager : Employee
     {
         public override void ProcessRequest(WithdrawViewModel req)
         {
             Context context = new Context();
             BankProcess bankProcess = new BankProcess();
-            if (req.Amount <= 40000)
+            if (req.Amount <= 250000)
             {
-                bankProcess.EmployeeName = "Veznedar - Ahmet Yılmaz";
-                bankProcess.Description = "Müşteriye talep etmiş olduğu tutarın ödemesi vezne sorumlusu tarafından gerçekleştirildi.";
-                bankProcess.Amount=req.Amount;
-                bankProcess.CustomerName = req.CustomerName;
-                context.BankProcesses.Add(bankProcess);
-                context.SaveChanges();
-            }
-            else if (NextApprover != null)
-            {
-                bankProcess.EmployeeName = "Veznedar - Ahmet Yılmaz";
-                bankProcess.Description = "Müşterinin talep ettiği tutar yetkim dahilinde olmadığı için işlem yetkilisi Şube Operasyon Yöneticisi olarak güncellendi.";
+                bankProcess.EmployeeName = "Bölge Müdürü - Güneş Kaya";
+                bankProcess.Description = "Müşteriye talep etmiş olduğu tutarın ödemesi Şube Müdürü tarafından gerçekleştirildi.";
                 bankProcess.Amount = req.Amount;
                 bankProcess.CustomerName = req.CustomerName;
                 context.BankProcesses.Add(bankProcess);
                 context.SaveChanges();
-                NextApprover.ProcessRequest(req);
+            }
+            else
+            {
+                bankProcess.EmployeeName = "Bölge Müdürü - Güneş Kaya";
+                bankProcess.Description = "Müşterinin talep ettiği tutar banka limitlerinin günlük çekim tutarı üzerinde olduğu için müşteriye ödeme yapılamamıştır.";
+                bankProcess.Amount = req.Amount;
+                bankProcess.CustomerName = req.CustomerName;
+                context.BankProcesses.Add(bankProcess);
+                context.SaveChanges();
             }
         }
     }

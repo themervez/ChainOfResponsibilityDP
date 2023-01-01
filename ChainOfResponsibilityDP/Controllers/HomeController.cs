@@ -1,4 +1,6 @@
-﻿using ChainOfResponsibilityDP.Models;
+﻿using ChainOfResponsibilityDP.ChainOfResponsibility;
+using ChainOfResponsibilityDP.DAL.Entities;
+using ChainOfResponsibilityDP.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -16,11 +18,6 @@ namespace ChainOfResponsibilityDP.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-        }
-
-        public IActionResult Index()
-        {
-            return View();
         }
 
         public IActionResult Privacy()

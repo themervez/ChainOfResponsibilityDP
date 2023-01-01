@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ChainOfResponsibilityDP.DAL.Entities;
+using ChainOfResponsibilityDP.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,6 +14,6 @@ namespace ChainOfResponsibilityDP.ChainOfResponsibility
         {
             this.NextApprover = supervisor;
         }
-        public abstract void ProcessRequest(WithdrawViewModel p);
+        public abstract void ProcessRequest(WithdrawViewModel req);
     }
 }

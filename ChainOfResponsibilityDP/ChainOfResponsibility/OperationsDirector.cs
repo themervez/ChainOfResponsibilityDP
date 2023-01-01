@@ -8,25 +8,25 @@ using System.Threading.Tasks;
 
 namespace ChainOfResponsibilityDP.ChainOfResponsibility
 {
-    public class Treasurer : Employee
+    public class OperationsDirector : Employee
     {
         public override void ProcessRequest(WithdrawViewModel req)
         {
             Context context = new Context();
             BankProcess bankProcess = new BankProcess();
-            if (req.Amount <= 40000)
+            if (req.Amount <= 70000)
             {
-                bankProcess.EmployeeName = "Veznedar - Ahmet Yılmaz";
-                bankProcess.Description = "Müşteriye talep etmiş olduğu tutarın ödemesi vezne sorumlusu tarafından gerçekleştirildi.";
-                bankProcess.Amount=req.Amount;
+                bankProcess.EmployeeName = "Şube Operasyon Yöneticisi - Hakan Kayalı";
+                bankProcess.Description = "Müşteriye talep etmiş olduğu tutarın ödemesi Şube Operasyon Yöneticisi tarafından gerçekleştirildi.";
+                bankProcess.Amount = req.Amount;
                 bankProcess.CustomerName = req.CustomerName;
                 context.BankProcesses.Add(bankProcess);
                 context.SaveChanges();
             }
             else if (NextApprover != null)
             {
-                bankProcess.EmployeeName = "Veznedar - Ahmet Yılmaz";
-                bankProcess.Description = "Müşterinin talep ettiği tutar yetkim dahilinde olmadığı için işlem yetkilisi Şube Operasyon Yöneticisi olarak güncellendi.";
+                bankProcess.EmployeeName = "Şube Operasyon Yöneticisi - Hakan Kayalı";
+                bankProcess.Description = "Müşterinin talep ettiği tutar yetkim dahilinde olmadığı için işlem yetkilisi Şube Müdürü olarak güncellendi.";
                 bankProcess.Amount = req.Amount;
                 bankProcess.CustomerName = req.CustomerName;
                 context.BankProcesses.Add(bankProcess);
