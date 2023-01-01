@@ -16,16 +16,5 @@
         <input type="text" class="form-control" asp-for="Amount" />
         <br />
         <button class="btn btn-outline-warning">Para Çekme Talebinde Bulun</button>
-        <br />
-        <br />
-        @if (TempData["SuccessMessage"] != null)
-        {
-            <div class="alert alert-success" role="alert">
-                @TempData["SuccessMessage"]
-            </div>
-        }
-        <br />
-        <br />
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     </form>
 </div>

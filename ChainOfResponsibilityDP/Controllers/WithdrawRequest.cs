@@ -26,7 +26,6 @@ namespace ChainOfResponsibilityDP.Controllers
 
             treasurer.ProcessRequest(req);
 
-            TempData["SuccessMessage"] = "Para çekme talebinizle ilgili süreç başarıyla tamamlanmıştır.";
             return View();
         }
     }
